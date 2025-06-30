@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolsHub - Professional Blogger Theme</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            /* Light Theme Colors */
+            --primary: #6c5ce7;
+            --secondary: #00cec9;
+            --accent: #fd79a8;
+            --text: #2d3436;
+            --bg: #f5f6fa;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            
+            /* Dark Theme Colors */
+            --primary-dark: #a29bfe;
+            --secondary-dark: #00b894;
+            --accent-dark: #ff7675;
+            --text-dark: #f5f6fa;
+            --bg-dark: #2d3436;
+            --card-bg-dark: rgba(45, 52, 54, 0.8);
+            --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.3);
+            
+            /* Sizes */
+            --header-height: 70px;
+            --max-width: 1200px;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+        
+        body.dark-mode {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--primary);
+            color: white;
+            height: var(--header-height);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .dark-mode header {
+            background: var(--primary-dark);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .dark-mode .logo span {
+            color: var(--secondary-dark);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .dark-mode nav ul li a:hover {
+            color: var(--secondary-dark);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        .dark-mode nav ul li a::after {
+            background: var(--secondary-dark);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: var(--header-height);
+            padding: 2rem 5%;
+            min-height: calc(100vh - var(--header-height));
+        }
+        
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .dark-mode .hero h1 {
+            background: linear-gradient(45deg, var(--primary-dark), var(--accent-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+        }
+        
+        .dark-mode .btn {
+            background: var(--primary-dark);
+            box-shadow: 0 4px 15px rgba(162, 155, 254, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
+        }
+        
+        .dark-mode .btn:hover {
+            box-shadow: 0 6px 20px rgba(162, 155, 254, 0.4);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+            margin-left: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 206, 201, 0.3);
+        }
+        
+        .dark-mode .btn-secondary {
+            background: var(--secondary-dark);
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            box-shadow: 0 6px 20px rgba(0, 206, 201, 0.4);
+        }
+        
+        .dark-mode .btn-secondary:hover {
+            box-shadow: 0 6px 20px rgba(0, 184, 148, 0.4);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .dark-mode .hero-image img {
+            box-shadow: var(--shadow-dark);
+        }
+        
+        /* Tools Section */
+        .section-title {
+            text-align: center;
+            margin: 3rem 0;
+            font-size: 2.2rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .dark-mode .section-title::after {
+            background: var(--primary-dark);
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .tool-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .dark-mode .tool-card {
+            background: var(--card-bg-dark);
+            box-shadow: var(--shadow-dark);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark-mode .tool-card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .dark-mode .tool-icon {
+            color: var(--primary-dark);
+        }
+        
+        .tool-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .tool-card p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+        
+        .tool-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .dark-mode .tool-btn {
+            background: var(--primary-dark);
+        }
+        
+        .tool-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .dark-mode .tool-btn:hover {
+            background: var(--secondary-dark);
+        }
+        
+        /* Tool Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 600px;
+            padding: 2rem;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-50px);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .dark-mode .modal-content {
+            background: var(--card-bg-dark);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-header h2 {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .dark-mode .modal-header h2 {
+            color: var(--primary-dark);
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+            transition: var(--transition);
+        }
+        
+        .dark-mode .close-modal {
+            color: var(--text-dark);
+        }
+        
+        .close-modal:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+        
+        .dark-mode .close-modal:hover {
+            color: var(--accent-dark);
+        }
+        
+        /* Tool Implementations */
+        .tool-input {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            font-family: inherit;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .dark-mode .tool-input {
+            background: rgba(45, 52, 54, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-dark);
+        }
+        
+        .tool-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+        }
+        
+        .dark-mode .tool-input:focus {
+            border-color: var(--primary-dark);
+            box-shadow: 0 0 0 3px rgba(162, 155, 254, 0.2);
+        }
+        
+        .tool-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            background: rgba(108, 92, 231, 0.1);
+            word-break: break-all;
+        }
+        
+        .dark-mode .tool-result {
+            background: rgba(162, 155, 254, 0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+        
+        .dark-mode footer {
+            background: var(--primary-dark);
+        }
+        
+        .footer-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary);
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .dark-mode .footer-column h3::after {
+            background: var(--secondary-dark);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .dark-mode .social-links a:hover {
+            background: var(--secondary-dark);
+        }
+        
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+            z-index: 1000;
+            border: none;
+            transition: var(--transition);
+        }
+        
+        .dark-mode .theme-toggle {
+            background: var(--primary-dark);
+            box-shadow: 0 4px 15px rgba(162, 155, 254, 0.3);
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 0;
+            }
+            
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Animations */
+        .animate-pop {
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in forwards;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Tool Specific Styles */
+        #wordCounterTextarea {
+            width: 100%;
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .word-counter-results {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+        
+        .counter-box {
+            background: rgba(108, 92, 231, 0.1);
+            padding: 0.8rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            flex: 1;
+            margin: 0 0.5rem;
+        }
+        
+        .dark-mode .counter-box {
+            background: rgba(162, 155, 254, 0.1);
+        }
+        
+        .counter-box h4 {
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.7;
+        }
+        
+        .counter-box p {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        /* File Upload Styles */
+        .file-upload-wrapper {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        
+        .file-upload-label {
+            display: block;
+            padding: 1.5rem;
+            border: 2px dashed rgba(108, 92, 231, 0.5);
+            border-radius: var(--border-radius);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .dark-mode .file-upload-label {
+            border-color: rgba(162, 155, 254, 0.5);
+        }
+        
+        .file-upload-label:hover {
+            border-color: var(--primary);
+            background: rgba(108, 92, 231, 0.05);
+        }
+        
+        .dark-mode .file-upload-label:hover {
+            border-color: var(--primary-dark);
+            background: rgba(162, 155, 254, 0.05);
+        }
+        
+        .file-upload-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 50px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        
+        .dark-mode .progress-container {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .dark-mode .progress-bar {
+            background: var(--primary-dark);
+        }
+        
+        /* QR Code Display */
+        #qrcode {
+            margin: 1rem auto;
+            text-align: center;
+        }
+        
+        #qrcode img {
+            max-width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="fade-in">
+        <div class="logo">Tools<span>Hub</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero animate__animated animate__fadeIn">
+            <div class="hero-content">
+                <h1>Your All-in-One Toolkit for Productivity</h1>
+                <p>Discover our collection of powerful, easy-to-use web tools that help you work smarter and faster. From document conversion to coding helpers, we've got you covered.</p>
+                <div>
+                    <a href="#tools" class="btn">Explore Tools</a>
+                    <a href="#blog" class="btn btn-secondary">Read Blog</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/500x350/6c5ce7/ffffff?text=ToolsHub" alt="ToolsHub Dashboard">
+            </div>
+        </section>
+
+        <!-- Tools Section -->
+        <section id="tools" class="tools-section">
+            <h2 class="section-title animate__animated animate__fadeIn">Our Powerful Tools</h2>
+            
+            <div class="tools-grid">
+                <!-- Word Counter Tool -->
+                <div class="tool-card animate-pop" data-delay="0.1s" data-tool="word-counter">
+                    <div class="tool-icon">
+                        <i class="fas fa-wordpress"></i>
+                    </div>
+                    <h3>Word Counter</h3>
+                    <p>Count words, characters, sentences and paragraphs in your text instantly.</p>
+                    <button class="tool-btn">Open Tool</button>
+                </div>
+                
+                <!-- Image Converter Tool -->
+                <div class="tool-card animate-pop" data-delay="0.2s" data-tool="image-converter">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-image"></i>
+                    </div>
+                    <h3>Image Converter</h3>
+                    <p>Convert between JPG, PNG, WEBP and PDF formats with ease.</p>
+                    <button class="tool-btn">Open Tool</button>
+                </div>
+                
+                <!-- QR Generator Tool -->
+                <div class="tool-card animate-pop" data-delay="0.3s" data-tool="qr-generator">
+                    <div class="tool-icon">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <h3>QR Generator</h3>
+                    <p>Create custom QR codes for URLs, text, contact info and more.</p>
+                    <button class="tool-btn">Open Tool</button>
+                </div>
+                
+                <!-- Password Generator Tool -->
+                <div class="tool-card animate-pop" data-delay="0.4s" data-tool="password-generator">
+                    <div class="tool-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Password Generator</h3>
+                    <p>Generate strong, secure passwords with customizable options.</p>
+                    <button class="tool-btn">Open Tool</button>
+                </div>
+                
+                <!-- Color Picker Tool -->
+                <div class="tool-card animate-pop" data-delay="0.5s" data-tool="color-picker">
+                    <div class="tool-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Color Picker</h3>
+                    <p>Pick colors, convert between formats, and create beautiful palettes.</p>
+                    <button class="tool-btn">Open Tool</button>
+                </div>
+                
+                <!-- Base64 Tool -->
+                <div class="tool-card animate-pop" data-delay="0.6s" data-tool="base64-converter">
+                    <div class="tool-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Base64 Converter</h3>
+                    <p>Encode and decode Base64 strings and files quickly.</p>
+                    <button class="tool-btn">Open Tool</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Preview Section -->
+        <section id="blog" class="blog-section">
+            <h2 class="section-title animate__animated animate__fadeIn">Latest Blog Posts</h2>
+            <!-- Blog posts would be loaded here -->
+            <div style="text-align: center; padding: 2rem 0;">
+                <p>Blog posts will be displayed here in the final implementation.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>ToolsHub</h3>
+                <p>Your all-in-one solution for web tools and utilities. Designed to make your online work easier and more efficient.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#tools">Tools</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Popular Tools</h3>
+                <ul>
+                    <li><a href="#" data-tool="word-counter">Word Counter</a></li>
+                    <li><a href="#" data-tool="image-converter">Image Converter</a></li>
+                    <li><a href="#" data-tool="qr-generator">QR Generator</a></li>
+                    <li><a href="#" data-tool="password-generator">Password Generator</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 ToolsHub. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Dark Mode Toggle -->
+    <button class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Tool Modals -->
+    <!-- Word Counter Tool Modal -->
+    <div class="modal" id="word-counter-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-wordpress"></i> Word Counter</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <textarea id="wordCounterTextarea" class="tool-input" placeholder="Type or paste your text here..."></textarea>
+                <div class="word-counter-results">
+                    <div class="counter-box">
+                        <h4>Words</h4>
+                        <p id="wordCount">0</p>
+                    </div>
+                    <div class="counter-box">
+                        <h4>Characters</h4>
+                        <p id="charCount">0</p>
+                    </div>
+                    <div class="counter-box">
+                        <h4>Sentences</h4>
+                        <p id="sentenceCount">0</p>
+                    </div>
+                    <div class="counter-box">
+                        <h4>Paragraphs</h4>
+                        <p id="paragraphCount">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Converter Tool Modal -->
+    <div class="modal" id="image-converter-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-file-image"></i> Image Converter</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="file-upload-wrapper">
+                    <label for="imageUpload" class="file-upload-label">
+                        <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                        <p>Click to upload an image file</p>
+                        <p><small>Supports JPG, PNG, WEBP</small></p>
+                    </label>
+                    <input type="file" id="imageUpload" class="file-upload-input" accept="image/*">
+                </div>
+                <div id="selectedFileName" style="margin-bottom: 1rem; font-size: 0.9rem;"></div>
+                <select id="outputFormat" class="tool-input">
+                    <option value="jpg">Convert to JPG</option>
+                    <option value="png">Convert to PNG</option>
+                    <option value="webp">Convert to WEBP</option>
+                    <option value="pdf">Convert to PDF</option>
+                </select>
+                <div class="progress-container" style="display: none;">
+                    <div class="progress-bar"></div>
+                </div>
+                <button id="convertImageBtn" class="btn" style="width: 100%; margin-top: 1rem;" disabled>Convert Image</button>
+                <div id="conversionResult" class="tool-result" style="display: none;">
+                    <a id="downloadLink" class="btn btn-secondary" style="width: 100%; margin-top: 1rem;" download>Download Converted File</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QR Generator Tool Modal -->
+    <div class="modal" id="qr-generator-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-qrcode"></i> QR Code Generator</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="qrText" class="tool-input" placeholder="Enter text or URL to encode">
+                <select id="qrSize" class="tool-input" style="margin-bottom: 1rem;">
+                    <option value="100">Small (100x100)</option>
+                    <option value="200" selected>Medium (200x200)</option>
+                    <option value="300">Large (300x300)</option>
+                </select>
+                <button id="generateQRBtn" class="btn" style="width: 100%;">Generate QR Code</button>
+                <div id="qrcode" style="margin-top: 1.5rem;"></div>
+                <div id="qrDownload" style="display: none; margin-top: 1rem;">
+                    <a id="downloadQR" class="btn btn-secondary" style="width: 100%;" download="qrcode.png">Download QR Code</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password Generator Tool Modal -->
+    <div class="modal" id="password-generator-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-lock"></i> Password Generator</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="margin-bottom: 1rem;">
+                    <label for="passwordLength">Length: <span id="lengthValue">12</span></label>
+                    <input type="range" id="passwordLength" min="6" max="32" value="12" class="tool-input" style="width: 100%;">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label><input type="checkbox" id="includeUppercase" checked> Uppercase Letters (A-Z)</label><br>
+                    <label><input type="checkbox" id="includeLowercase" checked> Lowercase Letters (a-z)</label><br>
+                    <label><input type="checkbox" id="includeNumbers" checked> Numbers (0-9)</label><br>
+                    <label><input type="checkbox" id="includeSymbols"> Symbols (!@#$%^&*)</label>
+                </div>
+                <button id="generatePasswordBtn" class="btn" style="width: 100%; margin-bottom: 1rem;">Generate Password</button>
+                <div class="tool-result">
+                    <input type="text" id="generatedPassword" class="tool-input" readonly style="text-align: center; font-weight: bold;">
+                    <button id="copyPasswordBtn" class="btn btn-secondary" style="width: 100%; margin-top: 1rem;">Copy to Clipboard</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Base64 Converter Tool Modal -->
+    <div class="modal" id="base64-converter-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-code"></i> Base64 Converter</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="margin-bottom: 1rem;">
+                    <button id="encodeBase64Btn" class="btn" style="width: 48%;">Encode</button>
+                    <button id="decodeBase64Btn" class="btn btn-secondary" style="width: 48%; float: right;">Decode</button>
+                </div>
+                <textarea id="base64Input" class="tool-input" placeholder="Enter text to encode or Base64 to decode" style="min-height: 150px;"></textarea>
+                <div class="tool-result" id="base64Result" style="min-height: 100px; display: none;">
+                    <button id="copyBase64Btn" class="btn btn-secondary" style="width: 100%; margin-bottom: 0.5rem;">Copy Result</button>
+                    <div id="base64Output" style="word-break: break-all;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <script>
+        // Dark Mode Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Check for saved theme preference or use system preference
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && darkModeMediaQuery.matches)) {
+            document.body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+        
+        // Handle system theme changes
+        darkModeMediaQuery.addListener((e) => {
+            if (localStorage.getItem('theme') === null) {
+                document.body.classList.toggle('dark-mode', e.matches);
+                themeToggle.innerHTML = e.matches ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            }
+        });
+        
+        // Modal Handling
+        const modals = document.querySelectorAll('.modal');
+        const modalTriggers = document.querySelectorAll('[data-tool], .close-modal');
+        
+        modalTriggers.forEach(trigger => {
+            trigger.addEventListener('click', function() {
+                const toolName = this.getAttribute('data-tool');
+                if (toolName) {
+                    const modal = document.getElementById(`${toolName}-modal`);
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                } else if (this.classList.contains('close-modal')) {
+                    this.closest('.modal').classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+        
+        // Close modal when clicking outside
+        modals.forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+        
+        // Word Counter Tool
+        const wordCounterTextarea = document.getElementById('wordCounterTextarea');
+        if (wordCounterTextarea) {
+            wordCounterTextarea.addEventListener('input', function() {
+                const text = this.value;
+                
+                // Word count
+                const wordCount = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+                document.getElementById('wordCount').textContent = wordCount;
+                
+                // Character count
+                document.getElementById('charCount').textContent = text.length;
+                
+                // Sentence count (very basic)
+                const sentenceCount = text.trim() === '' ? 0 : text.split(/[.!?]+/).filter(Boolean).length;
+                document.getElementById('sentenceCount').textContent = sentenceCount;
+                
+                // Paragraph count
+                const paragraphCount = text.trim() === '' ? 0 : text.split(/\n+/).filter(p => p.trim().length > 0).length;
+                document.getElementById('paragraphCount').textContent = paragraphCount;
+            });
+        }
+        
+        // Image Converter Tool
+        const imageUpload = document.getElementById('imageUpload');
+        const convertImageBtn = document.getElementById('convertImageBtn');
+        const selectedFileName = document.getElementById('selectedFileName');
+        
+        if (imageUpload) {
+            imageUpload.addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    selectedFileName.textContent = `Selected: ${this.files[0].name}`;
+                    convertImageBtn.disabled = false;
+                } else {
+                    selectedFileName.textContent = '';
+                    convertImageBtn.disabled = true;
+                }
+            });
+            
+            convertImageBtn.addEventListener('click', function() {
+                // In a real implementation, this would use a library like canvas-to-image
+                // For demo purposes, we'll simulate the conversion
+                const progressContainer = document.querySelector('#image-converter-modal .progress-container');
+                const progressBar = document.querySelector('#image-converter-modal .progress-bar');
+                const conversionResult = document.getElementById('conversionResult');
+                const downloadLink = document.getElementById('downloadLink');
+                
+                progressContainer.style.display = 'block';
+                conversionResult.style.display = 'none';
+                
+                // Simulate conversion progress
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += 5;
+                    progressBar.style.width = `${progress}%`;
+                    
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        progressContainer.style.display = 'none';
+                        conversionResult.style.display = 'block';
+                        
+                        // In a real app, this would be the actual converted file
+                        const outputFormat = document.getElementById('outputFormat').value;
+                        downloadLink.textContent = `Download ${outputFormat.toUpperCase()} File`;
+                        downloadLink.href = '#'; // Would be the blob URL in real implementation
+                    }
+                }, 100);
+            });
+        }
+        
+        // QR Generator Tool
+        const generateQRBtn = document.getElementById('generateQRBtn');
+        if (generateQRBtn) {
+            generateQRBtn.addEventListener('click', function() {
+                const text = document.getElementById('qrText').value;
+                const size = document.getElementById('qrSize').value;
+                const qrcodeDiv = document.getElementById('qrcode');
+                const qrDownload = document.getElementById('qrDownload');
+                
+                if (text.trim() === '') {
+                    alert('Please enter some text or URL to generate QR code');
+                    return;
+                }
+                
+                qrcodeDiv.innerHTML = '';
+                QRCode.toCanvas(qrcodeDiv, text, { width: parseInt(size) }, function(error) {
+                    if (error) {
+                        console.error(error);
+                        alert('Error generating QR code');
+                        return;
+                    }
+                    
+                    const canvas = qrcodeDiv.querySelector('canvas');
+                    const downloadLink = document.getElementById('downloadQR');
+                    downloadLink.href = canvas.toDataURL('image/png');
+                    qrDownload.style.display = 'block';
+                });
+            });
+        }
+        
+        // Password Generator Tool
+        const generatePasswordBtn = document.getElementById('generatePasswordBtn');
+        if (generatePasswordBtn) {
+            generatePasswordBtn.addEventListener('click', function() {
+                const length = parseInt(document.getElementById('passwordLength').value);
+                const includeUppercase = document.getElementById('includeUppercase').checked;
+                const includeLowercase = document.getElementById('includeLowercase').checked;
+                const includeNumbers = document.getElementById('includeNumbers').checked;
+                const includeSymbols = document.getElementById('includeSymbols').checked;
+                
+                let charset = '';
+                if (includeUppercase) charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                if (includeLowercase) charset += 'abcdefghijklmnopqrstuvwxyz';
+                if (includeNumbers) charset += '0123456789';
+                if (includeSymbols) charset += '!@#$%^&*()_+~`|}{[]\\:;?><,./-=';
+                
+                if (charset === '') {
+                    alert('Please select at least one character set');
+                    return;
+                }
+                
+                let password = '';
+                for (let i = 0; i < length; i++) {
+                    password += charset.charAt(Math.floor(Math.random() * charset.length));
+                }
+                
+                document.getElementById('generatedPassword').value = password;
+            });
+            
+            // Update length value display
+            document.getElementById('passwordLength').addEventListener('input', function() {
+                document.getElementById('lengthValue').textContent = this.value;
+            });
+            
+            // Copy password button
+            document.getElementById('copyPasswordBtn').addEventListener('click', function() {
+                const passwordField = document.getElementById('generatedPassword');
+                passwordField.select();
+                document.execCommand('copy');
+                alert('Password copied to clipboard!');
+            });
+        }
+        
+        // Base64 Converter Tool
+        const encodeBase64Btn = document.getElementById('encodeBase64Btn');
+        const decodeBase64Btn = document.getElementById('decodeBase64Btn');
+        const copyBase64Btn = document.getElementById('copyBase64Btn');
+        
+        if (encodeBase64Btn) {
+            encodeBase64Btn.addEventListener('click', function() {
+                const input = document.getElementById('base64Input').value;
+                if (input.trim() === '') {
+                    alert('Please enter some text to encode');
+                    return;
+                }
+                
+                const encoded = btoa(unescape(encodeURIComponent(input)));
+                document.getElementById('base64Output').textContent = encoded;
+                document.getElementById('base64Result').style.display = 'block';
+            });
+            
+            decodeBase64Btn.addEventListener('click', function() {
+                const input = document.getElementById('base64Input').value;
+                if (input.trim() === '') {
+                    alert('Please enter some Base64 to decode');
+                    return;
+                }
+                
+                try {
+                    const decoded = decodeURIComponent(escape(atob(input)));
+                    document.getElementById('base64Output').textContent = decoded;
+                    document.getElementById('base64Result').style.display = 'block';
+                } catch (e) {
+                    alert('Invalid Base64 input');
+                }
+            });
+            
+            copyBase64Btn.addEventListener('click', function() {
+                const output = document.getElementById('base64Output');
+                const range = document.createRange();
+                range.selectNode(output);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+                alert('Copied to clipboard!');
+            });
+        }
+        
+        // Animate elements on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-pop');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+                
+                if (elementTop < window.innerHeight && elementBottom > 0) {
+                    const delay = element.getAttribute('data-delay') || '0s';
+                    element.style.animation = `popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) ${delay} forwards`;
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on page load
+    </script>
+</body>
+</html>
