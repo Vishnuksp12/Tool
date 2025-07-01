@@ -3,48 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProTools - Premium Blogger Theme</title>
+    <title>EliteTools - Premium Blogger Theme</title>
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- GSAP for Advanced Animations -->
+    <!-- GSAP for Premium Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollToPlugin.min.js"></script>
     
-    <!-- Lottie for SVG Animations -->
+    <!-- Lottie for Premium SVG Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
+    
+    <!-- Swiper JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     
     <style>
         :root {
-            /* Professional Color Palette */
-            --primary: #4361ee;
-            --primary-dark: #3a56d4;
-            --secondary: #3f37c9;
-            --accent: #f72585;
-            --dark: #1a1a2e;
-            --darker: #16213e;
-            --light: #f8f9fa;
-            --lighter: #ffffff;
-            --gray: #6c757d;
-            --success: #4cc9f0;
+            /* Premium Color Palette */
+            --primary: #6C5CE7;
+            --primary-dark: #5649c0;
+            --secondary: #00B894;
+            --accent: #FD79A8;
+            --dark: #1A1A2E;
+            --darker: #0F0F1A;
+            --light: #F8F9FA;
+            --lighter: #FFFFFF;
+            --gray: #6C757D;
+            --success: #00B894;
+            --warning: #FDCB6E;
+            --danger: #D63031;
             
             /* Dark Theme Colors */
-            --primary-darkmode: #4895ef;
-            --secondary-darkmode: #560bad;
-            --accent-darkmode: #b5179e;
+            --primary-darkmode: #7C6EFF;
+            --secondary-darkmode: #00CE9D;
+            --accent-darkmode: #FF8EB3;
             
             /* Sizes */
             --header-height: 80px;
             --max-width: 1400px;
-            --border-radius: 16px;
-            --border-radius-sm: 8px;
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 20px 50px -10px rgba(0, 0, 0, 0.2);
+            --border-radius: 20px;
+            --border-radius-sm: 12px;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            --shadow: 0 15px 40px -15px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 25px 60px -15px rgba(0, 0, 0, 0.2);
+            --shadow-xl: 0 35px 80px -20px rgba(0, 0, 0, 0.3);
         }
         
         * {
@@ -73,8 +81,36 @@
         
         /* Typography */
         h1, h2, h3, h4 {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             line-height: 1.3;
+            font-weight: 800;
+        }
+        
+        /* Premium Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+        
+        .dark-mode ::-webkit-scrollbar-thumb {
+            background: var(--primary-darkmode);
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+        
+        .dark-mode ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-darkmode);
         }
         
         /* Header Styles */
@@ -84,8 +120,9 @@
             left: 0;
             width: 100%;
             height: var(--header-height);
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             box-shadow: var(--shadow);
             z-index: 1000;
             display: flex;
@@ -97,17 +134,18 @@
         }
         
         .dark-mode header {
-            background: rgba(26, 26, 46, 0.95);
+            background: rgba(26, 26, 46, 0.98);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .logo {
             font-size: 1.8rem;
-            font-weight: 700;
+            font-weight: 800;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             transition: var(--transition);
+            letter-spacing: -0.5px;
         }
         
         .dark-mode .logo {
@@ -127,34 +165,51 @@
         nav ul li a {
             color: var(--dark);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             transition: var(--transition);
             font-size: 0.95rem;
             letter-spacing: 0.5px;
+            position: relative;
+            padding: 0.5rem 0;
         }
         
         .dark-mode nav ul li a {
             color: var(--light);
         }
         
-        nav ul li a::before {
+        nav ul li a::after {
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
-            background: var(--primary);
-            bottom: -5px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            bottom: 0;
             left: 0;
             transition: var(--transition);
-            border-radius: 2px;
+            border-radius: 3px;
         }
         
-        .dark-mode nav ul li a::before {
-            background: var(--primary-darkmode);
+        .dark-mode nav ul li a::after {
+            background: linear-gradient(to right, var(--primary-darkmode), var(--secondary-darkmode));
         }
         
-        nav ul li a:hover::before {
+        nav ul li a:hover::after {
             width: 100%;
+        }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1100;
+        }
+        
+        .dark-mode .mobile-menu-btn {
+            color: var(--light);
         }
         
         /* Main Content */
@@ -165,7 +220,7 @@
         
         /* Hero Section */
         .hero {
-            min-height: 90vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             padding: 0 5%;
@@ -176,30 +231,33 @@
         .hero::before {
             content: '';
             position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(67, 97, 238, 0.15) 0%, rgba(67, 97, 238, 0) 70%);
-            top: -300px;
-            right: -300px;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(108, 92, 231, 0.15) 0%, rgba(108, 92, 231, 0) 70%);
+            top: -400px;
+            right: -400px;
             z-index: -1;
         }
         
         .dark-mode .hero::before {
-            background: radial-gradient(circle, rgba(72, 149, 239, 0.15) 0%, rgba(72, 149, 239, 0) 70%);
+            background: radial-gradient(circle, rgba(124, 110, 255, 0.15) 0%, rgba(124, 110, 255, 0) 70%);
         }
         
         .hero-content {
             max-width: 600px;
+            position: relative;
+            z-index: 2;
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             margin-bottom: 1.5rem;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
+            line-height: 1.1;
         }
         
         .dark-mode .hero h1 {
@@ -207,24 +265,24 @@
         }
         
         .hero p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-bottom: 2.5rem;
             opacity: 0.9;
             max-width: 500px;
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
         }
         
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: var(--primary);
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             color: white;
-            padding: 0.9rem 2rem;
+            padding: 1rem 2.2rem;
             border-radius: var(--border-radius-sm);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: var(--transition);
             border: none;
             cursor: pointer;
@@ -232,43 +290,50 @@
             position: relative;
             overflow: hidden;
             transform: translate3d(0, 0, 0);
+            font-size: 1rem;
         }
         
-        .btn::after {
+        .btn::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-            transform: translateY(100%);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: var(--transition);
         }
         
-        .btn:hover::after {
-            transform: translateY(0);
+        .btn:hover::before {
+            left: 100%;
         }
         
         .btn:hover {
-            transform: translateY(-3px) translateZ(0);
+            transform: translateY(-5px) translateZ(0);
             box-shadow: var(--shadow-lg);
         }
         
         .btn:active {
             transform: translateY(0) translateZ(0);
+            box-shadow: var(--shadow);
         }
         
         .dark-mode .btn {
-            background: var(--primary-darkmode);
+            background: linear-gradient(to right, var(--primary-darkmode), var(--secondary-darkmode));
         }
         
         .btn-secondary {
             background: transparent;
             color: var(--primary);
             border: 2px solid var(--primary);
-            margin-left: 1rem;
+            margin-left: 1.5rem;
             box-shadow: none;
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border-color: transparent;
         }
         
         .dark-mode .btn-secondary {
@@ -276,13 +341,8 @@
             border-color: var(--primary-darkmode);
         }
         
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
         .dark-mode .btn-secondary:hover {
-            background: var(--primary-darkmode);
+            background: linear-gradient(to right, var(--primary-darkmode), var(--secondary-darkmode));
         }
         
         .hero-image {
@@ -293,9 +353,10 @@
             height: 80%;
             border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-xl);
             opacity: 0;
             transform: translateX(50px);
+            z-index: 1;
         }
         
         .hero-image img {
@@ -305,13 +366,13 @@
         }
         
         /* Floating Particles Animation */
-        .particles {
+        .particles-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
+            overflow: hidden;
             z-index: -1;
         }
         
@@ -319,59 +380,69 @@
             position: absolute;
             background: var(--primary);
             border-radius: 50%;
-            opacity: 0.3;
-            animation: float 15s infinite linear;
+            opacity: 0.15;
+            animation: floatParticle 15s infinite linear;
+            filter: blur(1px);
         }
         
         .dark-mode .particle {
             background: var(--primary-darkmode);
         }
         
-        @keyframes float {
+        @keyframes floatParticle {
             0% {
                 transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.15;
+            }
+            90% {
+                opacity: 0.15;
             }
             100% {
-                transform: translateY(-1000px) rotate(720deg);
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
             }
         }
         
         /* Tools Section */
         .section {
-            padding: 6rem 5%;
+            padding: 8rem 5%;
             position: relative;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 5rem;
+            margin-bottom: 6rem;
             position: relative;
         }
         
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 1.5rem;
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
         }
         
         .section-title p {
             max-width: 700px;
             margin: 0 auto;
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
+            font-size: 1.1rem;
         }
         
         .section-title::after {
             content: '';
             position: absolute;
             width: 80px;
-            height: 4px;
+            height: 5px;
             background: linear-gradient(to right, var(--primary), var(--secondary));
-            bottom: -1.5rem;
+            bottom: -2rem;
             left: 50%;
             transform: translateX(-50%);
-            border-radius: 2px;
+            border-radius: 5px;
             opacity: 0;
         }
         
@@ -381,22 +452,23 @@
         
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
         }
         
         .tool-card {
             background: var(--lighter);
             border-radius: var(--border-radius);
-            padding: 2.5rem 2rem;
+            padding: 2.5rem;
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(40px);
             border: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 1;
         }
         
         .tool-card::before {
@@ -404,14 +476,16 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 4px;
-            height: 0;
-            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.03), rgba(0, 184, 148, 0.03));
+            z-index: -1;
+            opacity: 0;
             transition: var(--transition);
         }
         
         .dark-mode .tool-card::before {
-            background: linear-gradient(to bottom, var(--primary-darkmode), var(--secondary-darkmode));
+            background: linear-gradient(135deg, rgba(124, 110, 255, 0.05), rgba(0, 206, 157, 0.05));
         }
         
         .dark-mode .tool-card {
@@ -421,18 +495,19 @@
         
         .tool-card:hover {
             transform: translateY(-10px) translateZ(0);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-xl);
         }
         
         .tool-card:hover::before {
-            height: 100%;
+            opacity: 1;
         }
         
         .tool-icon {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 1.5rem;
             color: var(--primary);
             transition: var(--transition);
+            display: inline-block;
         }
         
         .dark-mode .tool-icon {
@@ -440,33 +515,34 @@
         }
         
         .tool-card:hover .tool-icon {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(5deg);
         }
         
         .tool-card h3 {
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.5rem;
             transition: var(--transition);
         }
         
         .tool-card p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             opacity: 0.8;
-            font-size: 0.95rem;
+            font-size: 1rem;
             transition: var(--transition);
         }
         
         .tool-btn {
-            background: rgba(67, 97, 238, 0.1);
+            background: rgba(108, 92, 231, 0.1);
             color: var(--primary);
             border: none;
-            padding: 0.7rem 1.5rem;
+            padding: 0.8rem 1.8rem;
             border-radius: var(--border-radius-sm);
             cursor: pointer;
             font-weight: 600;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
+            font-size: 0.95rem;
         }
         
         .tool-btn i {
@@ -481,15 +557,147 @@
         }
         
         .tool-btn:hover i {
-            transform: translateX(3px);
+            transform: translateX(5px);
         }
         
         .dark-mode .tool-btn {
-            background: rgba(72, 149, 239, 0.1);
+            background: rgba(124, 110, 255, 0.1);
             color: var(--primary-darkmode);
         }
         
         .dark-mode .tool-btn:hover {
+            background: var(--primary-darkmode);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.03), rgba(0, 184, 148, 0.03));
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dark-mode .testimonials {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(15, 15, 26, 0.9));
+        }
+        
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(108, 92, 231, 0.05) 0%, rgba(108, 92, 231, 0) 70%);
+            top: -300px;
+            left: -300px;
+            z-index: 0;
+        }
+        
+        .dark-mode .testimonials::before {
+            background: radial-gradient(circle, rgba(124, 110, 255, 0.05) 0%, rgba(124, 110, 255, 0) 70%);
+        }
+        
+        .testimonials .section-title h2 {
+            color: var(--primary);
+            -webkit-text-fill-color: initial;
+            background: none;
+        }
+        
+        .dark-mode .testimonials .section-title h2 {
+            color: var(--primary-darkmode);
+        }
+        
+        .swiper {
+            width: 100%;
+            height: 100%;
+            padding: 2rem;
+            margin: -2rem;
+        }
+        
+        .testimonial-card {
+            background: var(--lighter);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            height: auto;
+        }
+        
+        .dark-mode .testimonial-card {
+            background: var(--dark);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .testimonial-content {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            position: relative;
+        }
+        
+        .testimonial-content::before {
+            content: '"';
+            position: absolute;
+            top: -1rem;
+            left: -1rem;
+            font-size: 4rem;
+            color: rgba(108, 92, 231, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .dark-mode .testimonial-content::before {
+            color: rgba(124, 110, 255, 0.1);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .author-info p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background: rgba(108, 92, 231, 0.3);
+            opacity: 1;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: var(--primary);
+            width: 30px;
+            border-radius: 6px;
+        }
+        
+        .dark-mode .swiper-pagination-bullet {
+            background: rgba(124, 110, 255, 0.3);
+        }
+        
+        .dark-mode .swiper-pagination-bullet-active {
             background: var(--primary-darkmode);
         }
         
@@ -501,13 +709,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             z-index: 2000;
             justify-content: center;
             align-items: center;
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.5s ease;
         }
         
         .modal.active {
@@ -519,12 +728,12 @@
             background: var(--lighter);
             border-radius: var(--border-radius);
             width: 90%;
-            max-width: 800px;
+            max-width: 900px;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-xl);
             transform: translateY(50px);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             border: 1px solid rgba(0, 0, 0, 0.1);
         }
@@ -542,7 +751,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 2rem;
+            padding: 1.8rem 2.5rem;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
@@ -556,13 +765,13 @@
         }
         
         .modal-header h2 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             display: flex;
             align-items: center;
         }
         
         .modal-header h2 i {
-            margin-right: 0.8rem;
+            margin-right: 1rem;
             color: var(--primary);
         }
         
@@ -573,12 +782,12 @@
         .close-modal {
             background: none;
             border: none;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
             color: var(--gray);
             transition: var(--transition);
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -593,16 +802,17 @@
         
         .dark-mode .close-modal:hover {
             background: rgba(255, 255, 255, 0.05);
+            color: var(--accent-darkmode);
         }
         
         .modal-body {
-            padding: 2rem;
+            padding: 2.5rem;
         }
         
         /* Tool Specific Styles */
         .tool-input {
             width: 100%;
-            padding: 1rem;
+            padding: 1.2rem;
             border-radius: var(--border-radius-sm);
             border: 1px solid rgba(0, 0, 0, 0.1);
             margin-bottom: 1.5rem;
@@ -621,27 +831,27 @@
         .tool-input:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
         }
         
         .dark-mode .tool-input:focus {
             border-color: var(--primary-darkmode);
-            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.2);
+            box-shadow: 0 0 0 3px rgba(124, 110, 255, 0.2);
         }
         
         .tool-result {
             margin-top: 1.5rem;
             padding: 1.5rem;
             border-radius: var(--border-radius-sm);
-            background: rgba(67, 97, 238, 0.05);
+            background: rgba(108, 92, 231, 0.05);
             word-break: break-all;
-            border: 1px dashed rgba(67, 97, 238, 0.3);
+            border: 1px dashed rgba(108, 92, 231, 0.3);
             transition: var(--transition);
         }
         
         .dark-mode .tool-result {
-            background: rgba(72, 149, 239, 0.05);
-            border: 1px dashed rgba(72, 149, 239, 0.3);
+            background: rgba(124, 110, 255, 0.05);
+            border: 1px dashed rgba(124, 110, 255, 0.3);
         }
         
         /* File Upload Styles */
@@ -656,31 +866,31 @@
             align-items: center;
             justify-content: center;
             padding: 3rem 2rem;
-            border: 2px dashed rgba(67, 97, 238, 0.3);
+            border: 2px dashed rgba(108, 92, 231, 0.3);
             border-radius: var(--border-radius);
             text-align: center;
             cursor: pointer;
             transition: var(--transition);
-            background: rgba(67, 97, 238, 0.03);
+            background: rgba(108, 92, 231, 0.03);
         }
         
         .dark-mode .file-upload-label {
-            border-color: rgba(72, 149, 239, 0.3);
-            background: rgba(72, 149, 239, 0.03);
+            border-color: rgba(124, 110, 255, 0.3);
+            background: rgba(124, 110, 255, 0.03);
         }
         
         .file-upload-label:hover {
             border-color: var(--primary);
-            background: rgba(67, 97, 238, 0.08);
+            background: rgba(108, 92, 231, 0.08);
         }
         
         .dark-mode .file-upload-label:hover {
             border-color: var(--primary-darkmode);
-            background: rgba(72, 149, 239, 0.08);
+            background: rgba(124, 110, 255, 0.08);
         }
         
         .file-upload-label i {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 1rem;
             color: var(--primary);
             transition: var(--transition);
@@ -707,7 +917,7 @@
             border-radius: 50px;
             margin: 1.5rem 0;
             overflow: hidden;
-            height: 8px;
+            height: 10px;
         }
         
         .dark-mode .progress-container {
@@ -718,7 +928,7 @@
             height: 100%;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             width: 0%;
-            transition: width 0.4s ease;
+            transition: width 0.5s ease;
         }
         
         .dark-mode .progress-bar {
@@ -729,25 +939,25 @@
         footer {
             background: var(--darker);
             color: white;
-            padding: 5rem 5% 3rem;
+            padding: 6rem 5% 4rem;
             position: relative;
         }
         
         .dark-mode footer {
-            background: #0f0f1a;
+            background: #0a0a12;
         }
         
         .footer-content {
             max-width: var(--max-width);
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 4rem;
         }
         
         .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            margin-bottom: 1.8rem;
             position: relative;
             display: inline-block;
         }
@@ -755,12 +965,12 @@
         .footer-column h3::after {
             content: '';
             position: absolute;
-            width: 40px;
+            width: 50px;
             height: 3px;
             background: var(--primary);
-            bottom: -8px;
+            bottom: -10px;
             left: 0;
-            border-radius: 2px;
+            border-radius: 3px;
         }
         
         .dark-mode .footer-column h3::after {
@@ -772,51 +982,97 @@
         }
         
         .footer-column ul li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
         }
         
         .footer-column ul li a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: var(--transition);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            display: inline-block;
+            padding: 0.3rem 0;
         }
         
         .footer-column ul li a:hover {
             color: white;
-            padding-left: 5px;
+            transform: translateX(5px);
         }
         
         .social-links {
             display: flex;
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
         }
         
         .social-links a {
             color: white;
             background: rgba(255, 255, 255, 0.1);
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: var(--transition);
+            font-size: 1.1rem;
         }
         
         .social-links a:hover {
             background: var(--primary);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
         
         .dark-mode .social-links a:hover {
             background: var(--primary-darkmode);
         }
         
+        .newsletter-form {
+            margin-top: 1.5rem;
+        }
+        
+        .newsletter-input {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border-radius: var(--border-radius-sm);
+            border: none;
+            margin-bottom: 1rem;
+            font-family: inherit;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .newsletter-btn {
+            width: 100%;
+            padding: 0.9rem;
+            border-radius: var(--border-radius-sm);
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .newsletter-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .dark-mode .newsletter-btn {
+            background: var(--primary-darkmode);
+        }
+        
+        .dark-mode .newsletter-btn:hover {
+            background: var(--secondary-darkmode);
+        }
+        
         .copyright {
-            margin-top: 4rem;
-            padding-top: 2rem;
+            margin-top: 5rem;
+            padding-top: 3rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
             font-size: 0.9rem;
@@ -826,51 +1082,103 @@
         /* Floating Action Button */
         .fab {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
+            bottom: 2.5rem;
+            right: 2.5rem;
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: var(--primary);
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-xl);
             cursor: pointer;
             z-index: 100;
             transition: var(--transition);
             border: none;
+            font-size: 1.2rem;
         }
         
         .fab:hover {
             transform: scale(1.1) translateZ(0);
-            background: var(--primary-dark);
+            box-shadow: 0 15px 40px -10px rgba(108, 92, 231, 0.4);
         }
         
         .dark-mode .fab {
-            background: var(--primary-darkmode);
+            background: linear-gradient(to right, var(--primary-darkmode), var(--secondary-darkmode));
         }
         
         .dark-mode .fab:hover {
-            background: var(--secondary-darkmode);
+            box-shadow: 0 15px 40px -10px rgba(124, 110, 255, 0.4);
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 9rem;
+            right: 2.5rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            z-index: 99;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .dark-mode .back-to-top {
+            background: rgba(26, 26, 46, 0.5);
+            color: var(--primary-darkmode);
+        }
+        
+        .dark-mode .back-to-top:hover {
+            background: var(--primary-darkmode);
         }
         
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+        }
+        
         @media (max-width: 1024px) {
             .hero-image {
                 position: relative;
                 right: auto;
                 width: 100%;
                 max-width: 100%;
-                height: 400px;
+                height: 450px;
                 margin-top: 3rem;
             }
             
             .hero {
                 flex-direction: column;
-                padding-top: 3rem;
-                padding-bottom: 3rem;
+                padding-top: 4rem;
+                padding-bottom: 4rem;
                 min-height: auto;
             }
             
@@ -881,34 +1189,109 @@
             
             .btn-secondary {
                 margin-left: 0;
-                margin-top: 1rem;
+                margin-top: 1.5rem;
+            }
+            
+            .section {
+                padding: 6rem 5%;
             }
         }
         
         @media (max-width: 768px) {
             :root {
                 --header-height: 70px;
+                --border-radius: 16px;
             }
             
             .hero h1 {
                 font-size: 2.5rem;
             }
             
-            nav ul {
-                display: none;
+            .hero p {
+                font-size: 1.1rem;
             }
             
-            .section {
-                padding: 4rem 5%;
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--lighter);
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                transition: var(--transition);
+                box-shadow: -10px 0 30px -10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .dark-mode nav ul {
+                background: var(--dark);
+                box-shadow: -10px 0 30px -10px rgba(0, 0, 0, 0.3);
+            }
+            
+            nav ul.active {
+                right: 0;
+            }
+            
+            nav ul li {
+                margin: 0 0 1.5rem 0;
+            }
+            
+            nav ul li a {
+                color: var(--dark);
+                font-size: 1rem;
+                padding: 0.5rem 0;
+            }
+            
+            .dark-mode nav ul li a {
+                color: var(--light);
+            }
+            
+            .mobile-menu-btn {
+                display: block;
             }
             
             .section-title h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 3rem;
+            }
+            
+            .fab {
+                bottom: 2rem;
+                right: 2rem;
+                width: 55px;
+                height: 55px;
+                font-size: 1.1rem;
+            }
+            
+            .back-to-top {
+                bottom: 8rem;
+                right: 2rem;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-body {
+                padding: 1.5rem;
             }
         }
         
@@ -933,64 +1316,24 @@
             }
         }
         
-        /* Particle Animation */
-        .particles-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }
-        
-        .particle {
-            position: absolute;
-            background: var(--primary);
-            border-radius: 50%;
-            opacity: 0.15;
-            animation: floatParticle 15s infinite linear;
-        }
-        
-        .dark-mode .particle {
-            background: var(--primary-darkmode);
-        }
-        
-        @keyframes floatParticle {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.15;
-            }
-            90% {
-                opacity: 0.15;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-        
         /* Tool Specific Styles */
         .word-counter-results {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1rem;
-            margin-top: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
         
         .counter-box {
-            background: rgba(67, 97, 238, 0.1);
-            padding: 1rem;
+            background: rgba(108, 92, 231, 0.1);
+            padding: 1.2rem;
             border-radius: var(--border-radius-sm);
             text-align: center;
             transition: var(--transition);
         }
         
         .dark-mode .counter-box {
-            background: rgba(72, 149, 239, 0.1);
+            background: rgba(124, 110, 255, 0.1);
         }
         
         .counter-box:hover {
@@ -999,7 +1342,7 @@
         }
         
         .counter-box h4 {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             margin-bottom: 0.5rem;
             opacity: 0.7;
             text-transform: uppercase;
@@ -1007,7 +1350,7 @@
         }
         
         .counter-box p {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--primary);
         }
@@ -1020,8 +1363,8 @@
         input[type="range"] {
             -webkit-appearance: none;
             width: 100%;
-            height: 8px;
-            border-radius: 4px;
+            height: 10px;
+            border-radius: 5px;
             background: rgba(0, 0, 0, 0.1);
             outline: none;
             margin-bottom: 1.5rem;
@@ -1034,16 +1377,18 @@
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             background: var(--primary);
             cursor: pointer;
             transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(108, 92, 231, 0.3);
         }
         
         .dark-mode input[type="range"]::-webkit-slider-thumb {
             background: var(--primary-darkmode);
+            box-shadow: 0 2px 10px rgba(124, 110, 255, 0.3);
         }
         
         input[type="range"]::-webkit-slider-thumb:hover {
@@ -1054,8 +1399,8 @@
         .checkbox-container {
             display: block;
             position: relative;
-            padding-left: 30px;
-            margin-bottom: 1rem;
+            padding-left: 32px;
+            margin-bottom: 1.2rem;
             cursor: pointer;
             user-select: none;
         }
@@ -1072,11 +1417,11 @@
             position: absolute;
             top: 0;
             left: 0;
-            height: 20px;
-            width: 20px;
+            height: 22px;
+            width: 22px;
             background: var(--lighter);
             border: 2px solid rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
+            border-radius: 6px;
             transition: var(--transition);
         }
         
@@ -1107,12 +1452,12 @@
             content: '';
             position: absolute;
             display: none;
-            left: 6px;
-            top: 2px;
+            left: 7px;
+            top: 3px;
             width: 5px;
             height: 10px;
             border: solid white;
-            border-width: 0 2px 2px 0;
+            border-width: 0 3px 3px 0;
             transform: rotate(45deg);
         }
         
@@ -1126,6 +1471,104 @@
             max-width: 400px;
             margin: 0 auto;
         }
+        
+        /* Tool Tabs */
+        .tool-tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        .dark-mode .tool-tabs {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tool-tab {
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gray);
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .dark-mode .tool-tab {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .tool-tab::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: var(--transition);
+            border-radius: 3px 3px 0 0;
+        }
+        
+        .dark-mode .tool-tab::after {
+            background: var(--primary-darkmode);
+        }
+        
+        .tool-tab.active {
+            color: var(--primary);
+        }
+        
+        .dark-mode .tool-tab.active {
+            color: var(--primary-darkmode);
+        }
+        
+        .tool-tab.active::after {
+            width: 100%;
+        }
+        
+        .tool-tab-content {
+            display: none;
+        }
+        
+        .tool-tab-content.active {
+            display: block;
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius-sm);
+            box-shadow: var(--shadow-xl);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .toast.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .toast i {
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        .toast.success {
+            background: var(--success);
+        }
+        
+        .toast.error {
+            background: var(--danger);
+        }
     </style>
 </head>
 <body>
@@ -1134,9 +1577,12 @@
     
     <!-- Header -->
     <header>
-        <div class="logo">ProTools</div>
+        <div class="logo">EliteTools</div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
         <nav>
-            <ul>
+            <ul id="navMenu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#tools">Tools</a></li>
                 <li><a href="#blog">Blog</a></li>
@@ -1151,11 +1597,11 @@
         <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="hero-content">
-                <h1>Premium Web Tools at Your Fingertips</h1>
-                <p>Access a powerful suite of professional tools to streamline your workflow. From document conversion to code utilities, we've got you covered.</p>
+                <h1>Premium Web Tools for Professionals</h1>
+                <p>Access our exclusive collection of high-performance tools designed to optimize your workflow and boost productivity.</p>
                 <div>
-                    <a href="#tools" class="btn">Explore Tools</a>
-                    <a href="#blog" class="btn btn-secondary">Read Blog</a>
+                    <a href="#tools" class="btn">Explore Tools <i class="fas fa-arrow-right"></i></a>
+                    <a href="#blog" class="btn btn-secondary">Learn More</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -1166,8 +1612,8 @@
         <!-- Tools Section -->
         <section id="tools" class="section">
             <div class="section-title">
-                <h2>Our Professional Tools</h2>
-                <p>High-quality utilities designed to save you time and boost productivity</p>
+                <h2>Premium Tools Collection</h2>
+                <p>Professional-grade utilities designed to streamline your work and save valuable time</p>
             </div>
             
             <div class="tools-grid">
@@ -1233,8 +1679,72 @@
             </div>
         </section>
 
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <div class="section">
+                <div class="section-title">
+                    <h2>Trusted by Professionals</h2>
+                    <p>What our users say about EliteTools</p>
+                </div>
+                
+                <div class="swiper testimonialSwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <p>EliteTools has completely transformed my workflow. The PDF Toolkit saves me hours every week, and the interface is so intuitive that I was able to start using it immediately without any training.</p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">
+                                        <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah Johnson">
+                                    </div>
+                                    <div class="author-info">
+                                        <h4>Sarah Johnson</h4>
+                                        <p>Content Manager at TechCorp</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <p>As a developer, I appreciate the attention to detail in these tools. The API is well-documented and the performance is exceptional. The password generator is now an essential part of our security workflow.</p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">
+                                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+                                    </div>
+                                    <div class="author-info">
+                                        <h4>Michael Chen</h4>
+                                        <p>Lead Developer at SecureApp</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <p>The image conversion tools are the best I've found online. Being able to adjust quality settings and convert batches of images has saved me countless hours in my design workflow. Highly recommended!</p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">
+                                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emma Rodriguez">
+                                    </div>
+                                    <div class="author-info">
+                                        <h4>Emma Rodriguez</h4>
+                                        <p>Graphic Designer at CreativeStudio</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+
         <!-- Blog Preview Section -->
-        <section id="blog" class="section" style="background: rgba(67, 97, 238, 0.03);">
+        <section id="blog" class="section">
             <div class="section-title">
                 <h2>Latest From Our Blog</h2>
                 <p>Tips, tutorials and industry insights to help you work smarter</p>
@@ -1243,8 +1753,8 @@
             <!-- Blog posts would be loaded here -->
             <div style="text-align: center; padding: 2rem 0;">
                 <div class="lottie-animation" id="blog-lottie"></div>
-                <h3 style="margin-top: 1rem;">Coming Soon: Valuable Content</h3>
-                <p style="max-width: 600px; margin: 1rem auto;">Our blog section is being prepared with premium content to help you master these tools and improve your workflow.</p>
+                <h3 style="margin-top: 1rem;">Premium Content Coming Soon</h3>
+                <p style="max-width: 600px; margin: 1rem auto;">Our blog section is being prepared with exclusive content to help you master these tools and improve your workflow.</p>
             </div>
         </section>
     </main>
@@ -1253,7 +1763,7 @@
     <footer id="contact">
         <div class="footer-content">
             <div class="footer-column">
-                <h3>ProTools</h3>
+                <h3>EliteTools</h3>
                 <p>Premium web tools designed for professionals who demand quality and performance.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1269,15 +1779,17 @@
                     <li><a href="#" data-tool="image-converter">Image Converter</a></li>
                     <li><a href="#" data-tool="pdf-tools">PDF Tools</a></li>
                     <li><a href="#" data-tool="qr-generator">QR Generator</a></li>
+                    <li><a href="#" data-tool="password-generator">Password Vault</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h3>Resources</h3>
                 <ul>
                     <li><a href="#">Documentation</a></li>
+                    <li><a href="#">API Reference</a></li>
                     <li><a href="#">Tutorials</a></li>
-                    <li><a href="#">API Access</a></li>
                     <li><a href="#">Changelog</a></li>
+                    <li><a href="#">Help Center</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -1287,18 +1799,37 @@
                     <li><a href="#">Careers</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
                 </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get updates on new tools and features</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
             </div>
         </div>
         <div class="copyright">
-            &copy; 2023 ProTools. All rights reserved.
+            &copy; 2023 EliteTools. All rights reserved.
         </div>
     </footer>
 
-    <!-- Floating Action Button -->
+    <!-- Floating Action Buttons -->
     <button class="fab" id="themeToggle">
         <i class="fas fa-moon"></i>
     </button>
+    
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Operation completed successfully</span>
+    </div>
 
     <!-- Tool Modals -->
     <!-- Word Counter Tool Modal -->
@@ -1309,7 +1840,7 @@
                 <button class="close-modal">&times;</button>
             </div>
             <div class="modal-body">
-                <textarea id="wordCounterTextarea" class="tool-input" placeholder="Type or paste your text here..." style="min-height: 200px;"></textarea>
+                <textarea id="wordCounterTextarea" class="tool-input" placeholder="Type or paste your text here..." style="min-height: 250px;"></textarea>
                 <div class="word-counter-results">
                     <div class="counter-box">
                         <h4>Words</h4>
@@ -1337,7 +1868,7 @@
                     </div>
                 </div>
                 <div class="tool-result" style="margin-top: 2rem; display: none;" id="keywordAnalysis">
-                    <h4 style="margin-bottom: 1rem;">Keyword Analysis</h4>
+                    <h4 style="margin-bottom: 1.5rem;">Keyword Analysis</h4>
                     <div id="keywordList"></div>
                 </div>
             </div>
@@ -1352,49 +1883,68 @@
                 <button class="close-modal">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="file-upload-wrapper">
-                    <label for="imageUpload" class="file-upload-label">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <p>Drag & drop your image here</p>
-                        <p><small>or click to browse files</small></p>
-                    </label>
-                    <input type="file" id="imageUpload" class="file-upload-input" accept="image/*">
-                </div>
-                <div id="selectedFileName" style="margin-bottom: 1.5rem; font-size: 0.9rem;"></div>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
-                    <div>
-                        <label for="outputFormat" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Output Format</label>
-                        <select id="outputFormat" class="tool-input">
-                            <option value="jpg">JPEG (JPG)</option>
-                            <option value="png">PNG</option>
-                            <option value="webp">WebP</option>
-                            <option value="pdf">PDF</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="imageQuality" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Quality: <span id="qualityValue">90</span>%</label>
-                        <input type="range" id="imageQuality" min="10" max="100" value="90" class="tool-input">
-                    </div>
+                <div class="tool-tabs">
+                    <div class="tool-tab active" data-tab="single">Single Image</div>
+                    <div class="tool-tab" data-tab="batch">Batch Processing</div>
                 </div>
                 
-                <div class="progress-container" style="display: none;">
-                    <div class="progress-bar"></div>
+                <div class="tool-tab-content active" id="single-tab">
+                    <div class="file-upload-wrapper">
+                        <label for="imageUpload" class="file-upload-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop your image here</p>
+                            <p><small>or click to browse files</small></p>
+                        </label>
+                        <input type="file" id="imageUpload" class="file-upload-input" accept="image/*">
+                    </div>
+                    <div id="selectedFileName" style="margin-bottom: 1.5rem; font-size: 0.9rem;"></div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <label for="outputFormat" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Output Format</label>
+                            <select id="outputFormat" class="tool-input">
+                                <option value="jpg">JPEG (JPG)</option>
+                                <option value="png">PNG</option>
+                                <option value="webp">WebP</option>
+                                <option value="gif">GIF</option>
+                                <option value="pdf">PDF</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="imageQuality" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Quality: <span id="qualityValue">90</span>%</label>
+                            <input type="range" id="imageQuality" min="10" max="100" value="90" class="tool-input">
+                        </div>
+                    </div>
+                    
+                    <div class="progress-container" style="display: none;">
+                        <div class="progress-bar"></div>
+                    </div>
+                    
+                    <button id="convertImageBtn" class="btn" style="width: 100%; margin-top: 1rem;" disabled>
+                        <span id="convertBtnText">Convert Image</span>
+                        <span id="convertingText" style="display: none;"><i class="fas fa-spinner fa-spin"></i> Processing...</span>
+                    </button>
+                    
+                    <div id="conversionResult" class="tool-result" style="display: none; text-align: center;">
+                        <h4 style="margin-bottom: 1.5rem;">Conversion Complete!</h4>
+                        <div style="margin-bottom: 2rem;">
+                            <img id="convertedImagePreview" style="max-width: 100%; max-height: 250px; border-radius: var(--border-radius-sm); box-shadow: var(--shadow);">
+                        </div>
+                        <a id="downloadLink" class="btn btn-secondary" style="width: 100%;" download>
+                            <i class="fas fa-download"></i> Download Converted File
+                        </a>
+                    </div>
                 </div>
                 
-                <button id="convertImageBtn" class="btn" style="width: 100%; margin-top: 1rem;" disabled>
-                    <span id="convertBtnText">Convert Image</span>
-                    <span id="convertingText" style="display: none;"><i class="fas fa-spinner fa-spin"></i> Processing...</span>
-                </button>
-                
-                <div id="conversionResult" class="tool-result" style="display: none; text-align: center;">
-                    <h4 style="margin-bottom: 1rem;">Conversion Complete!</h4>
-                    <div style="margin-bottom: 1.5rem;">
-                        <img id="convertedImagePreview" style="max-width: 100%; max-height: 200px; border-radius: var(--border-radius-sm);">
+                <div class="tool-tab-content" id="batch-tab">
+                    <div style="text-align: center; padding: 3rem 2rem;">
+                        <div class="lottie-animation" id="batch-lottie" style="max-width: 300px; margin: 0 auto;"></div>
+                        <h3 style="margin-top: 2rem;">Batch Processing</h3>
+                        <p style="margin: 1rem auto 2rem; max-width: 500px;">Our premium batch processing feature allows you to convert multiple images at once with consistent settings.</p>
+                        <button class="btn" style="width: 100%; max-width: 300px;">
+                            <i class="fas fa-crown"></i> Upgrade to Pro
+                        </button>
                     </div>
-                    <a id="downloadLink" class="btn btn-secondary" style="width: 100%;" download>
-                        <i class="fas fa-download"></i> Download Converted File
-                    </a>
                 </div>
             </div>
         </div>
@@ -1408,19 +1958,67 @@
                 <button class="close-modal">&times;</button>
             </div>
             <div class="modal-body">
-                <div style="text-align: center; margin-bottom: 2rem;">
-                    <div class="lottie-animation" id="pdf-lottie" style="max-width: 300px;"></div>
-                    <h3 style="margin-top: 1rem;">Premium PDF Tools</h3>
-                    <p>Merge, split, compress and convert PDF files with our powerful toolkit.</p>
+                <div class="tool-tabs">
+                    <div class="tool-tab active" data-tab="merge">Merge PDFs</div>
+                    <div class="tool-tab" data-tab="split">Split PDF</div>
+                    <div class="tool-tab" data-tab="compress">Compress PDF</div>
+                    <div class="tool-tab" data-tab="convert">Convert PDF</div>
                 </div>
                 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                    <button class="btn" style="width: 100%;" id="pdfMergeBtn">
-                        <i class="fas fa-object-group"></i> Merge PDFs
-                    </button>
-                    <button class="btn btn-secondary" style="width: 100%;" id="pdfSplitBtn">
-                        <i class="fas fa-cut"></i> Split PDF
-                    </button>
+                <div class="tool-tab-content active" id="merge-tab">
+                    <div style="text-align: center; padding: 2rem 0;">
+                        <div class="lottie-animation" id="pdf-merge-lottie" style="max-width: 300px; margin: 0 auto;"></div>
+                        <h3 style="margin-top: 2rem;">Merge Multiple PDFs</h3>
+                        <p style="margin: 1rem auto 2rem; max-width: 500px;">Combine several PDF documents into one unified file with our easy-to-use merging tool.</p>
+                        
+                        <div class="file-upload-wrapper">
+                            <label for="pdfUpload" class="file-upload-label">
+                                <i class="fas fa-file-pdf"></i>
+                                <p>Select PDF files to merge</p>
+                                <p><small>You can select multiple files</small></p>
+                            </label>
+                            <input type="file" id="pdfUpload" class="file-upload-input" accept=".pdf" multiple>
+                        </div>
+                        
+                        <div id="selectedPdfFiles" style="margin: 1.5rem 0;"></div>
+                        
+                        <button id="mergePdfBtn" class="btn" style="width: 100%; max-width: 300px; margin: 0 auto;" disabled>
+                            <i class="fas fa-object-group"></i> Merge PDFs
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="tool-tab-content" id="split-tab">
+                    <div style="text-align: center; padding: 2rem 0;">
+                        <div class="lottie-animation" id="pdf-split-lottie" style="max-width: 300px; margin: 0 auto;"></div>
+                        <h3 style="margin-top: 2rem;">Split PDF Documents</h3>
+                        <p style="margin: 1rem auto 2rem; max-width: 500px;">Extract specific pages or split your PDF into multiple documents by page ranges.</p>
+                        <button class="btn" style="width: 100%; max-width: 300px;">
+                            <i class="fas fa-crown"></i> Upgrade to Pro
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="tool-tab-content" id="compress-tab">
+                    <div style="text-align: center; padding: 2rem 0;">
+                        <div class="lottie-animation" id="pdf-compress-lottie" style="max-width: 300px; margin: 0 auto;"></div>
+                        <h3 style="margin-top: 2rem;">Compress PDF Files</h3>
+                        <p style="margin: 1rem auto 2rem; max-width: 500px;">Reduce PDF file size while maintaining quality with our advanced compression algorithm.</p>
+                        <button class="btn" style="width: 100%; max-width: 300px;">
+                            <i class="fas fa-crown"></i> Upgrade to Pro
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="tool-tab-content" id="convert-tab">
+                    <div style="text-align: center; padding: 2rem 0;">
+                        <div class="lottie-animation" id="pdf-convert-lottie" style="max-width: 300px; margin: 0 auto;"></div>
+                        <h3 style="margin-top: 2rem;">Convert PDF to Other Formats</h3>
+                        <p style="margin: 1rem auto 2rem; max-width: 500px;">Transform your PDFs into Word, Excel, PowerPoint, or image formats with perfect formatting.</p>
+                        <button class="btn" style="width: 100%; max-width: 300px;">
+                            <i class="fas fa-crown"></i> Upgrade to Pro
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1436,22 +2034,24 @@
             <div class="modal-body">
                 <input type="text" id="qrText" class="tool-input" placeholder="Enter text or URL to encode">
                 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0;">
                     <div>
                         <label for="qrSize" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Size</label>
                         <select id="qrSize" class="tool-input">
                             <option value="150">Small (150x150)</option>
                             <option value="250" selected>Medium (250x250)</option>
                             <option value="350">Large (350x350)</option>
+                            <option value="450">Extra Large (450x450)</option>
                         </select>
                     </div>
                     <div>
                         <label for="qrColor" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Color</label>
                         <select id="qrColor" class="tool-input">
-                            <option value="#4361ee">Primary</option>
+                            <option value="#6C5CE7">Primary</option>
                             <option value="#000000">Black</option>
-                            <option value="#f72585">Accent</option>
-                            <option value="#3f37c9">Secondary</option>
+                            <option value="#FD79A8">Accent</option>
+                            <option value="#00B894">Secondary</option>
+                            <option value="#D63031">Red</option>
                         </select>
                     </div>
                 </div>
@@ -1460,7 +2060,7 @@
                     <i class="fas fa-qrcode"></i> Generate QR Code
                 </button>
                 
-                <div id="qrcode" style="margin: 2rem 0; text-align: center;"></div>
+                <div id="qrcode" style="margin: 2.5rem 0; text-align: center;"></div>
                 
                 <div id="qrDownload" style="display: none;">
                     <a id="downloadQR" class="btn btn-secondary" style="width: 100%;" download="qrcode.png">
@@ -1514,9 +2114,9 @@
                 </button>
                 
                 <div class="tool-result" style="text-align: center;">
-                    <input type="text" id="generatedPassword" class="tool-input" readonly style="text-align: center; font-weight: bold; font-size: 1.2rem; margin-bottom: 1rem;">
+                    <input type="text" id="generatedPassword" class="tool-input" readonly style="text-align: center; font-weight: bold; font-size: 1.2rem; margin-bottom: 1.5rem;">
                     
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                         <button id="copyPasswordBtn" class="btn btn-secondary">
                             <i class="fas fa-copy"></i> Copy
                         </button>
@@ -1537,30 +2137,46 @@
                 <button class="close-modal">&times;</button>
             </div>
             <div class="modal-body">
-                <div style="text-align: center; margin-bottom: 2rem;">
-                    <div class="lottie-animation" id="color-lottie" style="max-width: 300px;"></div>
-                    <h3 style="margin-top: 1rem;">Advanced Color Picker</h3>
-                    <p>Explore, create and export beautiful color palettes for your projects.</p>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                    <button class="btn" style="width: 100%;" id="colorPickerBtn">
-                        <i class="fas fa-eye-dropper"></i> Color Picker
-                    </button>
-                    <button class="btn btn-secondary" style="width: 100%;" id="paletteGeneratorBtn">
-                        <i class="fas fa-magic"></i> Palette Generator
-                    </button>
+                <div style="text-align: center; padding: 2rem 0;">
+                    <div class="lottie-animation" id="color-picker-lottie" style="max-width: 300px; margin: 0 auto;"></div>
+                    <h3 style="margin-top: 2rem;">Advanced Color Tools</h3>
+                    <p style="margin: 1rem auto 2rem; max-width: 500px;">Explore our premium color tools including palette generation, contrast checking, and CSS export.</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <button class="btn" id="colorPickerBtn">
+                            <i class="fas fa-eye-dropper"></i> Color Picker
+                        </button>
+                        <button class="btn btn-secondary" id="paletteGeneratorBtn">
+                            <i class="fas fa-magic"></i> Palette Generator
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
     <script>
         // Initialize GSAP animations
         gsap.registerPlugin(ScrollTrigger);
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            this.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
         
         // Dark Mode Toggle
         const themeToggle = document.getElementById('themeToggle');
@@ -1584,6 +2200,8 @@
                 duration: 0.3,
                 ease: "back.out(1.7)"
             });
+            
+            showToast('Theme changed to ' + (isDark ? 'dark' : 'light') + ' mode');
         });
         
         // Handle system theme changes
@@ -1597,14 +2215,14 @@
         // Create floating particles
         function createParticles() {
             const container = document.getElementById('particles');
-            const particleCount = window.innerWidth < 768 ? 15 : 30;
+            const particleCount = window.innerWidth < 768 ? 20 : 40;
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
                 
-                // Random size between 3px and 8px
-                const size = Math.random() * 5 + 3;
+                // Random size between 3px and 10px
+                const size = Math.random() * 7 + 3;
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
                 
@@ -1626,6 +2244,24 @@
         // Initialize particles
         createParticles();
         
+        // Initialize Swiper
+        const testimonialSwiper = new Swiper('.testimonialSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                }
+            }
+        });
+        
         // Modal Handling
         const modals = document.querySelectorAll('.modal');
         const modalTriggers = document.querySelectorAll('[data-tool], .close-modal');
@@ -1642,7 +2278,7 @@
                     gsap.from(modal.querySelector('.modal-content'), {
                         y: 50,
                         opacity: 0,
-                        duration: 0.5,
+                        duration: 0.6,
                         ease: "power3.out"
                     });
                 } else if (this.classList.contains('close-modal')) {
@@ -1650,7 +2286,7 @@
                     gsap.to(modal.querySelector('.modal-content'), {
                         y: 50,
                         opacity: 0,
-                        duration: 0.3,
+                        duration: 0.4,
                         ease: "power3.in",
                         onComplete: () => {
                             modal.classList.remove('active');
@@ -1668,7 +2304,7 @@
                     gsap.to(modal.querySelector('.modal-content'), {
                         y: 50,
                         opacity: 0,
-                        duration: 0.3,
+                        duration: 0.4,
                         ease: "power3.in",
                         onComplete: () => {
                             modal.classList.remove('active');
@@ -1676,6 +2312,35 @@
                         }
                     });
                 }
+            });
+        });
+        
+        // Tool Tabs
+        document.querySelectorAll('.tool-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                const tabContainer = this.closest('.tool-tabs');
+                const modalContent = this.closest('.modal-body');
+                
+                // Update active tab
+                tabContainer.querySelectorAll('.tool-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Update active content
+                modalContent.querySelectorAll('.tool-tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                modalContent.querySelector(`#${tabId}-tab`).classList.add('active');
+                
+                // Animate content change
+                gsap.from(`#${tabId}-tab`, {
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.5,
+                    ease: "power2.out"
+                });
             });
         });
         
@@ -1692,10 +2357,21 @@
                 });
             }
             
-            // PDF tools animation
-            if (document.getElementById('pdf-lottie')) {
+            // Batch processing animation
+            if (document.getElementById('batch-lottie')) {
                 lottie.loadAnimation({
-                    container: document.getElementById('pdf-lottie'),
+                    container: document.getElementById('batch-lottie'),
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    path: 'https://assets1.lottiefiles.com/packages/lf20_5tkzkblw.json'
+                });
+            }
+            
+            // PDF merge animation
+            if (document.getElementById('pdf-merge-lottie')) {
+                lottie.loadAnimation({
+                    container: document.getElementById('pdf-merge-lottie'),
                     renderer: 'svg',
                     loop: true,
                     autoplay: true,
@@ -1703,10 +2379,43 @@
                 });
             }
             
-            // Color picker animation
-            if (document.getElementById('color-lottie')) {
+            // PDF split animation
+            if (document.getElementById('pdf-split-lottie')) {
                 lottie.loadAnimation({
-                    container: document.getElementById('color-lottie'),
+                    container: document.getElementById('pdf-split-lottie'),
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    path: 'https://assets1.lottiefiles.com/packages/lf20_5tkzkblw.json'
+                });
+            }
+            
+            // PDF compress animation
+            if (document.getElementById('pdf-compress-lottie')) {
+                lottie.loadAnimation({
+                    container: document.getElementById('pdf-compress-lottie'),
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    path: 'https://assets1.lottiefiles.com/packages/lf20_5tkzkblw.json'
+                });
+            }
+            
+            // PDF convert animation
+            if (document.getElementById('pdf-convert-lottie')) {
+                lottie.loadAnimation({
+                    container: document.getElementById('pdf-convert-lottie'),
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    path: 'https://assets1.lottiefiles.com/packages/lf20_5tkzkblw.json'
+                });
+            }
+            
+            // Color picker animation
+            if (document.getElementById('color-picker-lottie')) {
+                lottie.loadAnimation({
+                    container: document.getElementById('color-picker-lottie'),
                     renderer: 'svg',
                     loop: true,
                     autoplay: true,
@@ -1763,8 +2472,8 @@
                     if (topWords.length > 0) {
                         const keywordList = document.getElementById('keywordList');
                         keywordList.innerHTML = topWords.map(word => 
-                            `<div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(0, 0, 0, 0.05);">
-                                <span>${word.split(' ')[0]}</span>
+                            `<div style="display: flex; justify-content: space-between; padding: 0.8rem 0; border-bottom: 1px solid rgba(0, 0, 0, 0.05);">
+                                <span style="font-weight: 500;">${word.split(' ')[0]}</span>
                                 <span>${word.split(' ')[1]}</span>
                             </div>`
                         ).join('');
@@ -1854,11 +2563,65 @@
                         gsap.from(conversionResult, {
                             y: 20,
                             opacity: 0,
-                            duration: 0.5,
+                            duration: 0.6,
                             ease: "power2.out"
                         });
+                        
+                        showToast('Image converted successfully!');
                     }
                 }, 50);
+            });
+        }
+        
+        // PDF Tools - Merge PDFs
+        const pdfUpload = document.getElementById('pdfUpload');
+        const mergePdfBtn = document.getElementById('mergePdfBtn');
+        const selectedPdfFiles = document.getElementById('selectedPdfFiles');
+        
+        if (pdfUpload) {
+            pdfUpload.addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    selectedPdfFiles.innerHTML = '';
+                    
+                    Array.from(this.files).forEach((file, index) => {
+                        const fileElement = document.createElement('div');
+                        fileElement.style.display = 'flex';
+                        fileElement.style.justifyContent = 'space-between';
+                        fileElement.style.alignItems = 'center';
+                        fileElement.style.padding = '0.8rem 0';
+                        fileElement.style.borderBottom = '1px solid rgba(0, 0, 0, 0.05)';
+                        
+                        fileElement.innerHTML = `
+                            <div style="display: flex; align-items: center;">
+                                <i class="fas fa-file-pdf" style="color: var(--danger); margin-right: 0.8rem;"></i>
+                                <span>${file.name}</span>
+                            </div>
+                            <span style="font-size: 0.9rem; opacity: 0.7;">${(file.size / 1024).toFixed(1)} KB</span>
+                        `;
+                        
+                        selectedPdfFiles.appendChild(fileElement);
+                    });
+                    
+                    mergePdfBtn.disabled = false;
+                } else {
+                    selectedPdfFiles.innerHTML = '';
+                    mergePdfBtn.disabled = true;
+                }
+            });
+            
+            mergePdfBtn.addEventListener('click', function() {
+                if (pdfUpload.files.length < 2) {
+                    showToast('Please select at least 2 PDF files to merge', 'error');
+                    return;
+                }
+                
+                // In a real implementation, this would merge the PDFs
+                showToast('Merging PDFs... (This is a demo)', 'success');
+                
+                // Simulate merging after a delay
+                setTimeout(() => {
+                    showToast('PDFs merged successfully! (Demo)', 'success');
+                }, 2000);
             });
         }
         
@@ -1873,7 +2636,7 @@
                 const qrDownload = document.getElementById('qrDownload');
                 
                 if (text.trim() === '') {
-                    alert('Please enter some text or URL to generate QR code');
+                    showToast('Please enter some text or URL to generate QR code', 'error');
                     return;
                 }
                 
@@ -1887,7 +2650,7 @@
                 }, function(error) {
                     if (error) {
                         console.error(error);
-                        alert('Error generating QR code');
+                        showToast('Error generating QR code', 'error');
                         return;
                     }
                     
@@ -1900,9 +2663,11 @@
                     gsap.from(canvas, {
                         scale: 0.8,
                         opacity: 0,
-                        duration: 0.5,
+                        duration: 0.6,
                         ease: "back.out(1.7)"
                     });
+                    
+                    showToast('QR code generated successfully!');
                 });
             });
         }
@@ -1924,7 +2689,7 @@
                 if (includeSymbols) charset += '!@#$%^&*()_+~`|}{[]\\:;?><,./-=';
                 
                 if (charset === '') {
-                    alert('Please select at least one character set');
+                    showToast('Please select at least one character set', 'error');
                     return;
                 }
                 
@@ -1942,6 +2707,8 @@
                     duration: 0.3,
                     ease: "power2.out"
                 });
+                
+                showToast('Password generated successfully!');
             });
             
             // Update length value display
@@ -1952,103 +2719,83 @@
             // Copy password button
             document.getElementById('copyPasswordBtn').addEventListener('click', function() {
                 const passwordField = document.getElementById('generatedPassword');
+                if (!passwordField.value) {
+                    showToast('Please generate a password first', 'error');
+                    return;
+                }
+                
                 passwordField.select();
                 document.execCommand('copy');
                 
                 // Show feedback
-                const originalText = this.innerHTML;
-                this.innerHTML = '<i class="fas fa-check"></i> Copied!';
-                
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                }, 2000);
+                showToast('Password copied to clipboard!');
             });
             
             // Save password button (simulated)
             document.getElementById('savePasswordBtn').addEventListener('click', function() {
                 const password = document.getElementById('generatedPassword').value;
                 if (!password) {
-                    alert('Please generate a password first');
+                    showToast('Please generate a password first', 'error');
                     return;
                 }
                 
                 // In a real app, this would save to a database
-                const originalText = this.innerHTML;
-                this.innerHTML = '<i class="fas fa-check"></i> Saved!';
-                
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                }, 2000);
+                showToast('Password saved to your vault! (Demo)');
             });
         }
         
-        // Base64 Converter Tool
-        const encodeBase64Btn = document.getElementById('encodeBase64Btn');
-        const decodeBase64Btn = document.getElementById('decodeBase64Btn');
-        const copyBase64Btn = document.getElementById('copyBase64Btn');
+        // Color Picker Tool
+        const colorPickerBtn = document.getElementById('colorPickerBtn');
+        const paletteGeneratorBtn = document.getElementById('paletteGeneratorBtn');
         
-        if (encodeBase64Btn) {
-            encodeBase64Btn.addEventListener('click', function() {
-                const input = document.getElementById('base64Input').value;
-                if (input.trim() === '') {
-                    alert('Please enter some text to encode');
-                    return;
-                }
-                
-                const encoded = btoa(unescape(encodeURIComponent(input)));
-                document.getElementById('base64Output').textContent = encoded;
-                document.getElementById('base64Result').style.display = 'block';
-                
-                // Animate result appearance
-                gsap.from(document.getElementById('base64Result'), {
-                    y: 20,
-                    opacity: 0,
-                    duration: 0.5,
-                    ease: "power2.out"
-                });
+        if (colorPickerBtn) {
+            colorPickerBtn.addEventListener('click', function() {
+                showToast('Color picker tool activated! (This is a demo)', 'success');
             });
             
-            decodeBase64Btn.addEventListener('click', function() {
-                const input = document.getElementById('base64Input').value;
-                if (input.trim() === '') {
-                    alert('Please enter some Base64 to decode');
-                    return;
-                }
-                
-                try {
-                    const decoded = decodeURIComponent(escape(atob(input)));
-                    document.getElementById('base64Output').textContent = decoded;
-                    document.getElementById('base64Result').style.display = 'block';
-                    
-                    // Animate result appearance
-                    gsap.from(document.getElementById('base64Result'), {
-                        y: 20,
-                        opacity: 0,
-                        duration: 0.5,
-                        ease: "power2.out"
-                    });
-                } catch (e) {
-                    alert('Invalid Base64 input');
-                }
+            paletteGeneratorBtn.addEventListener('click', function() {
+                showToast('Palette generator tool activated! (This is a demo)', 'success');
             });
+        }
+        
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', function() {
+            gsap.to(window, {
+                duration: 1,
+                scrollTo: 0,
+                ease: "power2.inOut"
+            });
+        });
+        
+        // Toast Notification
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
             
-            copyBase64Btn.addEventListener('click', function() {
-                const output = document.getElementById('base64Output');
-                const range = document.createRange();
-                range.selectNode(output);
-                window.getSelection().removeAllRanges();
-                window.getSelection().addRange(range);
-                document.execCommand('copy');
-                window.getSelection().removeAllRanges();
-                
-                // Show feedback
-                const originalText = this.innerHTML;
-                this.innerHTML = '<i class="fas fa-check"></i> Copied!';
-                
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                }, 2000);
-            });
+            toast.className = `toast ${type}`;
+            toastMessage.textContent = message;
+            
+            // Set appropriate icon
+            const icon = toast.querySelector('i');
+            icon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+            
+            // Show toast
+            toast.classList.add('show');
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
         }
         
         // Initialize animations on page load
@@ -2057,7 +2804,7 @@
             gsap.to('.hero h1', {
                 opacity: 1,
                 y: 0,
-                duration: 0.8,
+                duration: 1,
                 delay: 0.3,
                 ease: "power3.out"
             });
@@ -2065,7 +2812,7 @@
             gsap.to('.hero p', {
                 opacity: 1,
                 y: 0,
-                duration: 0.8,
+                duration: 1,
                 delay: 0.5,
                 ease: "power3.out"
             });
@@ -2073,7 +2820,7 @@
             gsap.to('.hero-image', {
                 opacity: 1,
                 x: 0,
-                duration: 0.8,
+                duration: 1,
                 delay: 0.7,
                 ease: "power3.out"
             });
@@ -2082,7 +2829,7 @@
             gsap.to('.section-title h2', {
                 opacity: 1,
                 y: 0,
-                duration: 0.6,
+                duration: 0.8,
                 scrollTrigger: {
                     trigger: '.section-title',
                     start: "top 80%"
@@ -2093,7 +2840,7 @@
             gsap.to('.section-title p', {
                 opacity: 1,
                 y: 0,
-                duration: 0.6,
+                duration: 0.8,
                 delay: 0.2,
                 scrollTrigger: {
                     trigger: '.section-title',
@@ -2104,7 +2851,7 @@
             
             gsap.to('.section-title::after', {
                 opacity: 1,
-                duration: 0.6,
+                duration: 0.8,
                 delay: 0.4,
                 scrollTrigger: {
                     trigger: '.section-title',
@@ -2118,7 +2865,7 @@
                 gsap.to(card, {
                     opacity: 1,
                     y: 0,
-                    duration: 0.6,
+                    duration: 0.8,
                     delay: i * 0.1,
                     scrollTrigger: {
                         trigger: card,
@@ -2127,12 +2874,32 @@
                     ease: "power3.out"
                 });
             });
+            
+            // Testimonial cards animation
+            gsap.utils.toArray('.testimonial-card').forEach((card, i) => {
+                gsap.from(card, {
+                    opacity: 0,
+                    y: 50,
+                    duration: 0.6,
+                    delay: i * 0.1,
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 90%"
+                    },
+                    ease: "power2.out"
+                });
+            });
         }
         
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
             initAnimations();
             loadLottieAnimations();
+            
+            // Show welcome toast after a delay
+            setTimeout(() => {
+                showToast('Welcome to EliteTools! Explore our premium tools collection.');
+            }, 2000);
         });
     </script>
 </body>
